@@ -83,7 +83,8 @@
     line-height:1.3;margin-bottom:2px;padding:0;text-align:left;
   }
   .rail-home:hover{text-decoration:underline;}
-  .rail-sub{font-size:.78rem;color:#B7C0D6;margin-bottom:18px;}
+  .rail-sub{font-size:.78rem;color:#B7C0D6;margin-bottom:6px;}
+  .rail-home-hint{font-size:.7rem;color:#7E8BA8;margin-bottom:18px;}
 
   .field-label{font-size:.7rem;color:#8290AC;margin:0 0 6px 2px;}
   .audience-toggle{
@@ -286,6 +287,7 @@
     <nav class="rail" aria-label="Training sections">
       <button class="rail-home" id="rail-home-link">ABC Summer Training</button>
       <div class="rail-sub">Field guide — Days 1 &amp; 2</div>
+      <div class="rail-home-hint">↑ Click the title to return to the start page</div>
 
       <div class="field-label">Show content for</div>
       <div class="audience-toggle" id="audience-toggle">
@@ -788,6 +790,7 @@ function renderQuizPicker(){
 }
 
 function startQuiz(){
+  scrollToTop();
   quizOrder = buildQuizOrder();
   quizIdx = 0; quizScore = 0; quizAnswered = false;
   renderQuiz();
@@ -858,7 +861,7 @@ function renderQuiz(){
       const nextBtn = document.getElementById('quiz-next');
       nextBtn.disabled = false;
       nextBtn.addEventListener('click', ()=>{
-        quizIdx++; quizAnswered = false; renderQuiz();
+        quizIdx++; quizAnswered = false; scrollToTop(); renderQuiz();
       });
     });
   });
@@ -873,7 +876,14 @@ function attachQuizPickerEvents(){
   });
 }
 
+function scrollToTop(){
+  window.scrollTo({top:0, left:0, behavior:'auto'});
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+}
+
 function renderApp(){
+  scrollToTop();
   renderNav();
   document.getElementById('btn-mode-reference').classList.toggle('active', mode==='reference');
   document.getElementById('btn-mode-quiz').classList.toggle('active', mode==='quiz');
@@ -900,6 +910,7 @@ document.querySelectorAll('#audience-toggle button').forEach(btn=>{
 function showLanding(){
   document.getElementById('landing-view').style.display = 'block';
   document.getElementById('app-view').style.display = 'none';
+  scrollToTop();
 }
 function showAppView(){
   document.getElementById('landing-view').style.display = 'none';
