@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ABC Summer Training — Day 1 Field Guide</title>
+<title>ABC Summer Training — Field Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -17,6 +17,7 @@
     --teal:#1E5C55; --teal-soft:#E1EDEA;
     --amber:#8A5A15; --amber-soft:#F3E7D2;
     --plum:#5B3A66; --plum-soft:#EEE3F0;
+    --rose:#8A3B33; --rose-soft:#F3E1DE;
     --focus:#C89B3C;
   }
   *{box-sizing:border-box;}
@@ -32,64 +33,110 @@
   a{color:inherit;}
   button{font-family:inherit;}
   ::selection{background:#C89B3C55;}
-
-  /* Skip link / focus */
   :focus-visible{outline:2px solid var(--focus);outline-offset:2px;}
 
+  /* ============ LANDING VIEW ============ */
+  #landing-view .wrap{max-width:760px;margin:0 auto;padding:0 24px 90px;}
+  #landing-view .hero{background:var(--navy);color:#EDEFF4;padding:56px 24px 50px;margin-bottom:44px;}
+  #landing-view .hero-inner{max-width:760px;margin:0 auto;}
+  #landing-view .hero-eyebrow{font-size:.85rem;color:#B7C0D6;margin-bottom:10px;}
+  #landing-view .hero h1{font-size:2.3rem;line-height:1.15;color:#fff;letter-spacing:-.01em;max-width:15ch;}
+  #landing-view .hero p{font-size:1.05rem;color:#C9D0E2;margin-top:16px;max-width:52ch;}
+  #landing-view .hero-meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:26px;font-size:.83rem;color:#9AA6C2;}
+  #landing-view .hero-meta strong{color:#EDEFF4;font-weight:600;}
+  #landing-view section{margin-bottom:44px;}
+  #landing-view h2{font-size:1.35rem;margin-bottom:16px;letter-spacing:-.01em;}
+  #landing-view p.lead{font-size:1rem;color:#333c48;max-width:60ch;}
+  #landing-view .card-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:18px;}
+  #landing-view .steps{list-style:none;margin:18px 0 0;padding:0;counter-reset:step;}
+  #landing-view .steps li{counter-increment:step;display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line);}
+  #landing-view .steps li:first-child{border-top:none;}
+  #landing-view .step-num{font-family:'Source Serif 4',serif;font-weight:600;font-size:1.1rem;color:var(--navy);flex:0 0 28px;}
+  #landing-view .step-num::before{content:counter(step);}
+  #landing-view .step-body h3{font-size:.98rem;margin-bottom:4px;}
+  #landing-view .step-body p{margin:0;font-size:.9rem;color:#3a4350;}
+  #landing-view .callout{background:var(--amber-soft);border-left:4px solid var(--amber);padding:16px 18px;font-size:.9rem;color:#3a2f16;}
+  #landing-view .callout strong{color:var(--amber);}
+  #landing-view .cta-wrap{text-align:center;padding:34px 24px 10px;}
+  #landing-view .cta-btn{display:inline-block;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:.98rem;padding:14px 30px;border-radius:6px;border:none;cursor:pointer;}
+  #landing-view .cta-btn:hover{background:#141F38;}
+  #landing-view .cta-note{margin-top:12px;font-size:.82rem;color:var(--ink-soft);max-width:44ch;margin-left:auto;margin-right:auto;}
+  #landing-view footer{text-align:center;font-size:.78rem;color:var(--ink-soft);padding-top:20px;border-top:1px solid var(--line);}
+  @media (max-width:640px){
+    #landing-view .card-grid{grid-template-columns:1fr;}
+    #landing-view .hero h1{font-size:1.9rem;}
+  }
+
+  /* ============ APP VIEW ============ */
   .app{display:flex;min-height:100vh;}
 
-  /* ---------- Sidebar ---------- */
   .rail{
-    width:280px;flex:0 0 280px;
+    width:290px;flex:0 0 290px;
     background:var(--navy);
     color:#EDEFF4;
     padding:24px 18px 24px;
     position:sticky;top:0;height:100vh;overflow-y:auto;
   }
-  .rail-title{
-    font-size:1.05rem;line-height:1.3;color:#fff;margin-bottom:2px;
+  .rail-home{
+    background:transparent;border:none;color:#fff;cursor:pointer;
+    font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:1.05rem;
+    line-height:1.3;margin-bottom:2px;padding:0;text-align:left;
   }
-  .rail-sub{
-    font-size:.78rem;color:#B7C0D6;margin-bottom:22px;
+  .rail-home:hover{text-decoration:underline;}
+  .rail-sub{font-size:.78rem;color:#B7C0D6;margin-bottom:18px;}
+
+  .field-label{font-size:.7rem;color:#8290AC;margin:0 0 6px 2px;}
+  .audience-toggle{
+    display:flex;flex-direction:column;gap:4px;margin-bottom:18px;
+    background:#141F38;border:1px solid #2C3A5B;border-radius:8px;padding:4px;
   }
+  .audience-toggle button{
+    text-align:left;background:transparent;border:none;color:#B7C0D6;
+    padding:8px 10px;border-radius:6px;cursor:pointer;font-size:.82rem;font-weight:600;
+  }
+  .audience-toggle button.active{background:#EDEFF4;color:var(--navy);}
+
   .mode-toggle{
-    display:flex;gap:6px;margin-bottom:20px;
+    display:flex;gap:6px;margin-bottom:16px;
     background:#141F38;border:1px solid #2C3A5B;border-radius:8px;padding:4px;
   }
   .mode-toggle button{
     flex:1;background:transparent;border:none;color:#B7C0D6;
     padding:8px 6px;border-radius:6px;cursor:pointer;font-size:.82rem;font-weight:600;
-    transition:background .15s,color .15s;
   }
   .mode-toggle button.active{background:#EDEFF4;color:var(--navy);}
-  .search-wrap{margin-bottom:18px;}
+
+  .search-wrap{margin-bottom:16px;}
   .search-wrap input{
     width:100%;padding:9px 10px;border-radius:6px;border:1px solid #2C3A5B;
     background:#141F38;color:#EDEFF4;font-size:.85rem;
   }
   .search-wrap input::placeholder{color:#7E8BA8;}
+
   .nav-list{list-style:none;margin:0;padding:0;}
   .nav-list li{margin-bottom:2px;}
   .nav-btn{
     width:100%;text-align:left;background:transparent;border:none;color:#D7DCEA;
-    padding:9px 10px;border-radius:6px;cursor:pointer;font-size:.85rem;
+    padding:9px 10px;border-radius:6px;cursor:pointer;font-size:.84rem;
     display:flex;align-items:center;gap:9px;
   }
   .nav-btn:hover{background:#26335A;}
   .nav-btn.active{background:#EDEFF4;color:var(--navy);font-weight:600;}
   .dot{width:9px;height:9px;border-radius:50%;flex:0 0 9px;}
+  .nav-scope{font-size:.68rem;color:#9AA6C2;margin-left:auto;flex-shrink:0;}
+  .nav-btn.active .nav-scope{color:#6B7690;}
   .rail-foot{margin-top:22px;padding-top:14px;border-top:1px solid #2C3A5B;font-size:.72rem;color:#8290AC;}
 
-  /* ---------- Main ---------- */
   .main{flex:1;min-width:0;padding:38px 44px 80px;max-width:920px;}
-  .top-search-results{margin-bottom:26px;}
   .top-search-results h2{font-size:1.2rem;margin-bottom:14px;}
   .section-header{margin-bottom:22px;}
-  .section-eyebrow{
-    display:inline-block;font-size:.78rem;color:var(--ink-soft);margin-bottom:6px;
-  }
+  .section-eyebrow{display:inline-block;font-size:.78rem;color:var(--ink-soft);margin-bottom:6px;}
   .section-header h2{font-size:1.7rem;letter-spacing:-.01em;}
   .presenters{font-size:.85rem;color:var(--ink-soft);margin-top:6px;}
+  .scope-note{
+    display:inline-block;margin-top:10px;font-size:.78rem;padding:4px 10px;
+    border-radius:20px;background:var(--rose-soft);color:var(--rose);font-weight:600;
+  }
 
   .card{
     background:var(--panel);
@@ -97,28 +144,23 @@
     border-left-width:4px;
     padding:16px 18px;margin-bottom:12px;border-radius:2px;
   }
-  .card h3{font-size:1rem;margin-bottom:6px;}
+  .card h3{font-size:1rem;margin-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
   .card p{margin:0;font-size:.93rem;color:#333c48;}
-  .card .badge{
-    display:inline-block;font-size:.72rem;font-weight:600;
-    padding:2px 8px;border-radius:20px;margin-bottom:8px;
+  .card .badge{display:inline-block;font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:20px;margin-bottom:8px;}
+  .fact-scope-tag{
+    font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:10px;
+    background:var(--rose-soft);color:var(--rose);
   }
 
-  .empty-state{
-    padding:40px 0;color:var(--ink-soft);font-size:.95rem;
-  }
+  .empty-state{padding:40px 0;color:var(--ink-soft);font-size:.95rem;}
 
-  /* ---------- Quiz ---------- */
   .quiz-picker{margin-bottom:22px;display:flex;flex-wrap:wrap;gap:8px;}
   .quiz-picker button{
     border:1px solid var(--line);background:#fff;padding:7px 13px;border-radius:20px;
     font-size:.82rem;cursor:pointer;color:var(--ink);
   }
   .quiz-picker button.active{background:var(--navy);color:#fff;border-color:var(--navy);}
-  .quiz-card{
-    background:var(--panel);border:1px solid var(--line);padding:28px 30px;
-    max-width:640px;
-  }
+  .quiz-card{background:var(--panel);border:1px solid var(--line);padding:28px 30px;max-width:640px;}
   .quiz-progress{font-size:.8rem;color:var(--ink-soft);margin-bottom:10px;}
   .quiz-q{font-size:1.15rem;margin-bottom:18px;line-height:1.4;}
   .quiz-choices{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
@@ -130,68 +172,162 @@
   .quiz-choice.correct{border-color:#1E5C55;background:var(--teal-soft);}
   .quiz-choice.incorrect{border-color:#9C3B2E;background:#F6E4E0;}
   .quiz-choice[disabled]{cursor:default;}
-  .quiz-explain{
-    font-size:.88rem;background:var(--navy-soft);border-radius:6px;padding:12px 14px;
-    margin-bottom:18px;display:none;
-  }
+  .quiz-explain{font-size:.88rem;background:var(--navy-soft);border-radius:6px;padding:12px 14px;margin-bottom:18px;display:none;}
   .quiz-explain.show{display:block;}
   .quiz-actions{display:flex;justify-content:space-between;align-items:center;}
-  .quiz-next{
-    background:var(--navy);color:#fff;border:none;padding:9px 18px;border-radius:6px;
-    cursor:pointer;font-size:.88rem;font-weight:600;
-  }
+  .quiz-next{background:var(--navy);color:#fff;border:none;padding:9px 18px;border-radius:6px;cursor:pointer;font-size:.88rem;font-weight:600;}
   .quiz-next[disabled]{opacity:.4;cursor:default;}
   .quiz-score{font-size:.85rem;color:var(--ink-soft);}
   .quiz-done{background:var(--panel);border:1px solid var(--line);padding:34px 30px;max-width:640px;}
   .quiz-done h3{font-size:1.3rem;margin-bottom:8px;}
-  .restart-btn{
-    margin-top:14px;background:transparent;border:1px solid var(--navy);color:var(--navy);
-    padding:9px 16px;border-radius:6px;cursor:pointer;font-size:.87rem;font-weight:600;
-  }
+  .restart-btn{margin-top:14px;background:transparent;border:1px solid var(--navy);color:var(--navy);padding:9px 16px;border-radius:6px;cursor:pointer;font-size:.87rem;font-weight:600;}
 
   @media (max-width:760px){
     .app{flex-direction:column;}
     .rail{width:100%;flex:none;position:relative;height:auto;}
     .main{padding:26px 20px 60px;}
   }
-  @media (prefers-reduced-motion:reduce){
-    *{transition:none !important;}
-  }
+  @media (prefers-reduced-motion:reduce){*{transition:none !important;}}
 </style>
 </head>
 <body>
-<div class="app">
-  <nav class="rail" aria-label="Training sections">
-    <div class="rail-title">ABC Summer Training</div>
-    <div class="rail-sub">Day 1 field guide — State &amp; Higher Ed</div>
 
-    <div class="mode-toggle" role="tablist">
-      <button id="btn-mode-reference" class="active" role="tab" aria-selected="true">Reference</button>
-      <button id="btn-mode-quiz" role="tab" aria-selected="false">Quiz</button>
+<div id="landing-view">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">For Agency Benefits Coordinators</div>
+      <h1>The ABC Summer Training Field Guide</h1>
+      <p>Everything from this year's two-day training — searchable, organized by topic, and with a quiz to check what's sticking.</p>
+      <div class="hero-meta">
+        <span><strong>13</strong> topics</span>
+        <span><strong>4</strong> employer groups covered</span>
+        <span><strong>2</strong> ways to use it: look things up, or test yourself</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section>
+      <h2>What this is</h2>
+      <p class="lead">Every summer, Benefits Administration walks ABCs through a full day (or two) of updates — special qualifying events, plan changes, retirement rules, billing, and more. This guide takes that training and turns it into something you can actually come back to in October, in the middle of a phone call, instead of digging through a slide deck or a transcript.</p>
+      <p class="lead" style="margin-top:12px;">It covers <strong>both</strong> training days: Day 1 (State &amp; Higher Education) and Day 2 (Local Education &amp; Local Government). Where a rule is the same for everyone, it's just listed once. Where it isn't — deadlines, plan options, eligibility rules that genuinely differ by employer group — it's called out with a tag like this: <span class="fact-scope-tag">Local Ed &amp; Local Gov only</span></p>
+    </section>
+
+    <section>
+      <h2>What you can do with it</h2>
+      <div class="card-grid">
+        <div class="card" style="border-left-color:var(--navy)">
+          <h3>Look something up fast</h3>
+          <p>13 topic sections, from Special Qualifying Events to Billing to Retirement. Each one is a stack of short, specific answers — not a re-read of the whole transcript.</p>
+        </div>
+        <div class="card" style="border-left-color:var(--teal)">
+          <h3>Filter to your group</h3>
+          <p>Switch the sidebar filter to State &amp; Higher Ed or Local Ed &amp; Local Gov to hide everything that doesn't apply to your agencies.</p>
+        </div>
+        <div class="card" style="border-left-color:var(--amber)">
+          <h3>Test what you know</h3>
+          <p>Quiz mode pulls multiple-choice questions from the same content, with an explanation after every answer — good for onboarding a new ABC or a quick refresher before annual enrollment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>How to use it</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-num"></span>
+          <div class="step-body">
+            <h3>Set your audience filter</h3>
+            <p>At the top of the sidebar, choose "State &amp; Higher Education," "Local Education &amp; Local Government," or leave it on "All employer groups" to see everything, differences and all.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num"></span>
+          <div class="step-body">
+            <h3>Browse or search</h3>
+            <p>Click a topic in the sidebar to read through it, or type into the search box to jump straight to a specific rule, deadline, or dollar amount from any section.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num"></span>
+          <div class="step-body">
+            <h3>Switch to Quiz mode when you want to test yourself</h3>
+            <p>Use the Reference / Quiz toggle above the search box. In Quiz mode, pick "All topics" or a single topic, answer each question, and see an explanation before moving to the next one.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num"></span>
+          <div class="step-body">
+            <h3>Watch for the tags</h3>
+            <p>A pill like <span class="fact-scope-tag">State &amp; Higher Ed only</span> on a card or question means that rule doesn't apply the same way to the other employer groups — worth a second look before repeating it to a member.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section>
+      <div class="callout">
+        <strong>Good to know:</strong> this guide reflects what was presented in this year's training sessions. For anything with real stakes for a member — an appeal, an edge case, a number you're not fully sure of — confirm with the Active Service Center or your handout before you rely on it.
+      </div>
+    </section>
+
+    <div class="cta-wrap">
+      <button class="cta-btn" id="enter-app-btn">Open the field guide →</button>
     </div>
 
-    <div class="search-wrap" id="search-wrap">
-      <input type="text" id="search-input" placeholder="Search topics, deadlines, rules…" aria-label="Search reference guide">
-    </div>
+    <footer>
+      ABC Summer Training Field Guide · Built from Day 1 (State &amp; Higher Education) and Day 2 (Local Education &amp; Local Government)
+    </footer>
+  </div>
+</div>
 
-    <ul class="nav-list" id="nav-list"></ul>
+<div id="app-view" style="display:none">
+  <div class="app">
+    <nav class="rail" aria-label="Training sections">
+      <button class="rail-home" id="rail-home-link">ABC Summer Training</button>
+      <div class="rail-sub">Field guide — Days 1 &amp; 2</div>
 
-    <div class="rail-foot">Built from the first day of the annual ABC summer training. For State &amp; Higher Ed agency benefits coordinators.</div>
-  </nav>
+      <div class="field-label">Show content for</div>
+      <div class="audience-toggle" id="audience-toggle">
+        <button data-a="all" class="active">All employer groups</button>
+        <button data-a="state">State &amp; Higher Education</button>
+        <button data-a="local">Local Education &amp; Local Government</button>
+      </div>
 
-  <main class="main" id="main"></main>
+      <div class="mode-toggle" role="tablist">
+        <button id="btn-mode-reference" class="active" role="tab" aria-selected="true">Reference</button>
+        <button id="btn-mode-quiz" role="tab" aria-selected="false">Quiz</button>
+      </div>
+
+      <div class="search-wrap" id="search-wrap">
+        <input type="text" id="search-input" placeholder="Search topics, deadlines, rules…" aria-label="Search reference guide">
+      </div>
+
+      <ul class="nav-list" id="nav-list"></ul>
+
+      <div class="rail-foot">Built from the two-day annual ABC summer training. Day 1 covered State &amp; Higher Ed; Day 2 covered Local Education &amp; Local Government. Where the rules differ by group, cards are tagged.</div>
+    </nav>
+
+    <main class="main" id="main"></main>
+  </div>
 </div>
 
 <script>
+/* scope: undefined/omitted = applies to everyone.
+   'state' = State & Higher Education only (Day 1).
+   'local' = Local Education & Local Government only (Day 2). */
+
 const SECTIONS = [
   {
     id:'compliance', label:'Financial Stewardship & Compliance', color:'navy',
-    presenters:'Jennifer Gorley, Rachel Hansborough, Joshua Burns, Chanda Rainey, Teresa Liles',
+    presenters:'Jennifer Gorley, Rachel Hansborough, Joshua Burns, Lindsey Hammons, Chanda Rainey, Teresa Liles',
     facts:[
       {t:'PPACA minimum value', b:'The Affordable Care Act (enacted March 2010) requires employers to offer coverage that is affordable and covers at least 60% of the total allowed cost of benefits for full-time employees. AON Consulting performs this minimum-value analysis for BA every year.'},
-      {t:'OPEB (Other Post-Employment Benefits)', b:'Retiree health insurance is the most common OPEB. The state-administered plan is currently the only one subject to GASB financial reporting requirements, which BA meets through annual AON Consulting valuation reports.'},
-      {t:'CAA prescription drug reporting', b:'Under the Consolidated Appropriations Act of 2021, BA submits an annual report to CMS — in partnership with the PBM and TPAs — covering top drug spend, most-prescribed drugs, manufacturer rebates, and member cost sharing.'},
+      {t:'OPEB & GASB 75', b:'Retiree health insurance is the most common Other Post-Employment Benefit (OPEB). Under GASB Statement No. 75, employers must calculate the present value of expected future OPEB benefits, estimate how much is already earned, and report the resulting liability on their balance sheet. BA engages AON Consulting to provide the required valuation reports for the state plan and for all participating local agencies.'},
+      {t:'CAA prescription drug reporting', b:'Under the Consolidated Appropriations Act of 2021, BA submits an annual report to CMS — in partnership with the PBM, third-party administrators, and participating local agencies — covering top drug spend, most-prescribed drugs, manufacturer rebates, and member cost sharing.'},
       {t:'HIPAA — who\u2019s who', b:'Health plans, clearinghouses, and providers doing electronic transactions are "covered entities" (BA is the covered entity). A business associate is anyone outside the covered entity who handles PHI on its behalf — that\u2019s ABCs. Business associates are directly liable for HIPAA compliance, not just the covered entity.'},
+      {t:'Prohibition on other coverage', b:'Participating agencies can\u2019t offer, subsidize, market, broker, or incentivize enrollment into any other health plan or medical/pharmacy service that overlaps with what BA covers (voluntary dental/vision is excluded). Before offering any supplemental product, submit the marketing material and policy to BA — AON Consulting reviews it and issues a compliance determination.'},
+      {t:'Enrollment & claims data for agencies', b:'BA can provide local agencies with up to 36 months of aggregate enrollment and claims data (enrolled members, charges, allowed amounts, deductibles, copays, coinsurance, net payments) under Tennessee Code Annotated. Large-claims reports (claims exceeding $25,000) are also available on request to support underwriting and insurance quotes.'},
       {t:'BART (Benefits Administration Review Team)', b:'Reviews appeals about enrollment, benefit election changes, and coverage termination. BART cannot approve anything that conflicts with the plan document, and it does not review denied medical claims — those go to the carrier\u2019s appeals process.'},
       {t:'New Employee Checklist matters in appeals', b:'This is the document BART leans on most in disputed cases (e.g., "I was never told the deadline"). It must be signed and dated by the employee — without it, a dispute becomes "he said, she said."'},
     ],
@@ -202,46 +338,76 @@ const SECTIONS = [
       {q:'Which statement about ABCs and HIPAA is true?',
        choices:['ABCs are covered entities under HIPAA','ABCs are business associates and are directly liable for HIPAA compliance','Only BA can be held liable for a HIPAA violation','HIPAA only applies to healthcare providers'], a:1,
        ex:'BA is the covered entity; ABCs are business associates who handle PHI on BA\u2019s behalf, and business associates are directly, independently liable for compliance.'},
+      {q:'Before offering a supplemental insurance product alongside BA\u2019s plans, an agency should:',
+       choices:['Just launch it — nothing to check','Submit the marketing material and policy to BA for an AON Consulting review','Only inform members verbally','Nothing is required if it\u2019s voluntary dental or vision'], a:1,
+       ex:'Agencies can\u2019t market or incentivize enrollment into overlapping coverage without BA/AON reviewing it first — voluntary dental and vision are the one carved-out exception.'},
     ]
   },
   {
-    id:'changes2027', label:'2027 Plan Year Changes', color:'amber',
+    id:'changes2027', label:'2027 Premium & Plan Changes', color:'amber',
     presenters:'Alicia Johnson',
     facts:[
       {t:'Member cost share holds steady', b:'Copays, deductibles, and coinsurance are unchanged for 2027 — the one exception is the CDHP minimum deductible, which the IRS requires to rise: +$50 for employee-only, +$100 for all other tiers.'},
       {t:'No change to GLP-1 coverage', b:'Weight-loss GLP-1 coverage and member cost share are staying exactly the same in 2027.'},
       {t:'Only one carrier change', b:'No carrier changes anywhere in the program except the Tennessee Plan, which moves from UMR to Blue Cross Blue Shield effective January 1, 2027.'},
       {t:'Dental, vision, voluntary rates flat', b:'Dental, vision, and all other voluntary product rates are not changing for 2027.'},
-      {t:'State plan aggregate increase', b:'The state medical plan has an average (aggregate) rate increase of 7.9% for 2027.'},
+      {t:'Aggregate rate increases by group', b:'State medical plan: 7.9% average increase. Local Education medical plan: 8.7% average increase. Local Government medical plan: 10.5% average increase. These are averages — individual tiers may land above or below the group average.'},
+      {t:'New premium calculator tool', b:'A calculator on the ABC corner of Partners for Health lets an agency model contribution strategy — entering either a dollar amount or a percentage to see what the agency vs. the employee would pay across plans. All plans must be offered, but funding can be adjusted per plan as long as the funding approach is consistent within each carrier (you can\u2019t fund Blue Cross more generously than Cigna).'},
     ],
     quiz:[
       {q:'Which carrier change is happening for the 2027 plan year?',
        choices:['Blue Cross is leaving the state plan','The Tennessee Plan moves from UMR to Blue Cross Blue Shield','Cigna is being added as a brand-new carrier','All plans are consolidating to one carrier'], a:1,
        ex:'The Tennessee Plan (the Medicare supplement) changes its claims administrator from UMR to Blue Cross Blue Shield effective 1/1/2027.'},
-      {q:'What is actually increasing for members in 2027?',
-       choices:['Copays','Coinsurance percentages','The CDHP minimum deductible (IRS-mandated)','GLP-1 cost share'], a:2,
-       ex:'The IRS sets the CDHP minimum deductible floor, so it must rise — $50 for employee-only, $100 for all other tiers. Everything else in cost share stays flat.'},
+      {q:'Which group has the highest average 2027 medical premium increase?',
+       choices:['State','Local Education','Local Government','They\u2019re all identical'], a:2,
+       ex:'Local Government has the highest average increase at 10.5%, versus 8.7% for Local Education and 7.9% for the state plan.'},
     ]
   },
   {
     id:'onboarding', label:'New Hire Onboarding', color:'navy',
     presenters:'Tamara Scott',
     facts:[
+      {t:'Enter everyone who\u2019s eligible — even if waiving', b:'All benefits-eligible employees must be entered in Edison in a timely manner, even if they\u2019re not going to enroll (for example, they\u2019re already covered under a spouse\u2019s plan). Hire them in Edison and waive their coverage rather than skipping the entry.'},
       {t:'The 30-day clock', b:'New hires have 30 days to make elections, counted from the hire date or eligibility date — not the day after, which is the rule for mid-year special enrollments.'},
       {t:'10-day dependent doc extension', b:'A separate 10 calendar-day extension exists only for submitting missing dependent verification documents, on top of the 30-day election window.'},
       {t:'What happens if deadlines are missed', b:'No election within 30 days = coverage waived for the rest of the plan year. No dependent documentation within 40 days (30+10) = that dependent\u2019s coverage is waived for the rest of the year.'},
       {t:'Two enrollment paths', b:'Benefit e-Form: the ABC enters elections and uploads dependent docs directly in Edison. Employee Self-Service: the employee submits the Formstack application and uploads their own documentation in Edison.'},
-      {t:'Coverage effective dates', b:'Hired on the 1st of the month → coverage begins the 1st of the following month. Hired any other day → must satisfy one full calendar month first, so coverage begins the 1st of the month after that (e.g., hired July 2 → full month is August → coverage begins September 1).'},
-      {t:'Higher ed-to-higher ed moves: e-hire indicators', b:'Even if Edison shows "rehire," an employee moving from one participating higher ed agency to another is treated as a new hire. Check the e-hire color: green = still active elsewhere, proceed normally. Yellow = terminated record — check the termination date; if it\u2019s after your agency\u2019s hire date, notify BA via Zendesk to set up a new employee instance.'},
-      {t:'New Hire Checklist', b:'Required at every initial enrollment — new hire, rehire, or status change. Employee and ABC both sign; give the employee a copy and keep the original in the personnel file.'},
+      {t:'Local Education eligible employee categories', b:'Teachers (TCA 8-34-101), interim teachers, non-seasonal/non-temporary employees scheduled 30+ hours/week, school board members, and 25-hour employees — the agency\u2019s board must have passed a resolution for that last category to be in effect.', scope:'local'},
+      {t:'Local Government eligible employee categories', b:'Non-seasonal/non-temporary employees scheduled 30+ hours/week, members of the chief legislative body of the county or municipal government, and appointed or elected utility board members and county officials.', scope:'local'},
+      {t:'State/Higher Ed effective dates', b:'Hired on the 1st of the month → coverage begins the 1st of the following month. Hired any other day → must satisfy one full calendar month first, so coverage begins the 1st of the month after that (e.g., hired July 2 → full month is August → coverage begins September 1).', scope:'state'},
+      {t:'Local Education: two eligibility-date options', b:'Option 1 — eligibility date = hire date (hired July 1 → eligible July 1 → coverage begins August 1; 30-day deadline is July 30). Option 2 — eligibility is no later than the end of the subsequent month (hired July 1 → eligibility runs to August 31 → coverage begins September 1). If your agency uses Option 2, Edison will show the 15th of that month as the eligibility date, and the 30-day clock starts from there — e.g., hired August 3 → Edison shows September 15 as eligible, 30 days count from September 15.', scope:'local'},
+      {t:'Local Government: probationary period variants', b:'No probationary period: eligibility date = hire date, coverage begins the 1st of the following month. With a probationary period (30/60/90 days): enter the actual hire date in the Hire e-Form and Edison calculates the eligibility date automatically (e.g., hire date 5-3 with a 30-day period → Edison shows 6-2 as eligible → coverage begins 7-1).', scope:'local'},
+      {t:'Higher ed-to-higher ed / local-to-local moves: e-hire indicators', b:'Employees moving between participating agencies (higher ed to higher ed, or across Local Ed/Local Gov/State groups) are treated as new hires, even if Edison shows "rehire." Check the e-hire color: green = still active elsewhere — proceed with the hire so the losing agency can process the termination. Yellow = terminated record — check the termination date; if it\u2019s after your agency\u2019s hire date, notify BA via Zendesk to set up a new employee instance.'},
+      {t:'New Hire Checklist', b:'Required at every initial enrollment — new hire, rehire, or status change. It\u2019s customized to the plan options each entity offers. Employee and ABC both sign; give the employee a copy and keep the original in the personnel file.'},
     ],
     quiz:[
-      {q:'A new hire starts on July 2 and enrolls on time. When does coverage begin?',
+      {q:'A State/Higher Ed new hire starts on July 2 and enrolls on time. When does coverage begin?',
        choices:['July 1','August 1','September 1','October 1'], a:2,
        ex:'The employee must satisfy one full calendar month first — July doesn\u2019t count since they weren\u2019t hired on the 1st, so August is the qualifying full month and coverage starts September 1.'},
-      {q:'What does a yellow e-hire indicator mean when onboarding a higher-ed transfer?',
+      {q:'What does a yellow e-hire indicator mean when onboarding a transfer between participating agencies?',
        choices:['The employee is still active with the prior agency','The employee has a terminated record — check the termination date','The employee has never had an Edison record','The enrollment was auto-approved'], a:1,
        ex:'Yellow flags a terminated record. If that termination date falls after your agency\u2019s hire date, notify BA to create a new employee instance.'},
+      {q:'A Local Education agency uses eligibility Option 2 (no later than the end of the subsequent month) and hires someone on August 3. What will Edison show as the eligibility date?',
+       choices:['August 3','August 31','September 15','October 1'], a:2,
+       ex:'Option 2 always shows the 15th of the applicable month in Edison — here, September 15 — and the 30-day clock starts from that date.', scope:'local'},
+    ]
+  },
+  {
+    id:'equalsuperior', label:'Equal-or-Superior Process (Local Ed)', color:'rose', scope:'local',
+    presenters:'Tamara Scott',
+    facts:[
+      {t:'When it applies', b:'Applies to school systems not currently participating in the Local Education plan, and to any participating school system considering leaving it. It\u2019s a TCA-based evaluation — talk to Benefits Administration before making any moves.', scope:'local'},
+      {t:'Give yourself 60 days', b:'Allow at least 60 calendar days to submit your new plan for review if you want it rated "equal or superior" to the state plan. That rating is required to keep receiving Department of Education funding — you can still leave without it, but you\u2019ll lose that funding.', scope:'local'},
+      {t:'AON makes the final call', b:'BA forwards the submitted paperwork to AON Consulting, which makes the final determination on whether the new plan is equal or superior to the Local Education plan\u2019s benefits.', scope:'local'},
+      {t:'Watch the second-year premium', b:'Insurance agents know agencies are locked out of the Local Education plan for 24 months after leaving. Some quote a great first-year rate and raise it in year two. Push for a two-year premium quote before committing to a new plan.', scope:'local'},
+    ],
+    quiz:[
+      {q:'How many days should a Local Education agency allow to submit a new plan for an equal-or-superior review?',
+       choices:['At least 30 days','At least 60 days','At least 90 days','There\u2019s no deadline'], a:1,
+       ex:'60 days gives BA time to forward the paperwork to AON Consulting, which makes the final equal-or-superior determination.', scope:'local'},
+      {q:'What happens if an agency leaves the Local Education plan and its new plan is NOT rated equal or superior?',
+       choices:['The agency can\u2019t leave at all','The agency can still leave, but loses Department of Education funding','BA blocks the new plan from starting','Nothing — the rating is just informational'], a:1,
+       ex:'Leaving is allowed either way; the equal-or-superior rating is specifically what protects the agency\u2019s Department of Education funding.', scope:'local'},
     ]
   },
   {
@@ -252,11 +418,12 @@ const SECTIONS = [
       {t:'Three SQE types', b:'Gaining a new dependent (marriage, birth, adoption, placement for adoption, legal guardianship); loss of other group health coverage; newly eligible for Medicaid/CHIP premium assistance.'},
       {t:'New spouse name on record', b:'A new spouse is enrolled under the name on the marriage certificate, not a new legal name, until a Social Security card is provided showing the name change.'},
       {t:'Newborn without an SSN', b:'Enroll using all 9s. The member then has 90 days to provide the real SSN. If it\u2019s not available in time, BA needs monthly documentation of a genuine good-faith effort to obtain it (e.g., attorney correspondence, SSA communication) — a bare attestation isn\u2019t enough.'},
-      {t:'Loss of coverage — what "proof" means', b:'Must show coverage existed at the last time the employee had the chance to enroll and declined (not necessarily their most recent job) — including participant name, coverage type, dates, and the reason coverage ended.'},
+      {t:'Loss of coverage — what "proof" means', b:'Must show coverage existed at the last time the employee had the chance to enroll and declined (not necessarily their most recent job) — including participant name, coverage type, dates, and the reason coverage ended. The coverage they had doesn\u2019t need to match the type they\u2019re enrolling in beyond category — medical proves medical, dental proves dental.'},
       {t:'Voluntary cancellation doesn\u2019t count', b:'Voluntarily canceling TennCare because you expect to lose eligibility is NOT a qualifying event. TennCare determining you\u2019re no longer eligible IS a qualifying event.'},
       {t:'Whose dependents can enroll', b:'If the employee loses coverage, the employee and any eligible dependent may enroll. If only a dependent loses coverage, only the employee and that specific dependent may enroll — not other dependents.'},
-      {t:'Proof of joint ownership (married 12+ months)', b:'Required in addition to the marriage certificate: a bank, mortgage, or credit card statement from the last 6 months with both names; a residential lease within its current term (not month-to-month); a property tax statement from the last 12 months; or a joint federal tax return. Utility bills, driver\u2019s licenses, insurance cards, and plain mail are NOT accepted.'},
-      {t:'Medicaid/CHIP premium assistance', b:'Enrollment request due within 60 days of the eligibility notice, with documentation from Medicaid/CHIP proving qualification.'},
+      {t:'Proof of joint ownership (married 12+ months)', b:'Required in addition to the marriage certificate: a bank, mortgage, or credit card statement from the last 6 months with both names; a residential lease within its current term (not month-to-month, unless the landlord provides a dated letter confirming it\u2019s still active); a property tax statement from the last 6\u201312 months; or a joint federal tax return. Utility bills, driver\u2019s licenses, insurance cards, and plain mail are NOT accepted — financial figures can be redacted, BA just needs the document type, both names, and the date.'},
+      {t:'Medicaid/CHIP premium assistance deadline — State & Higher Ed', b:'Enrollment request due within 60 days of the eligibility notice, with documentation from Medicaid/CHIP proving qualification.', scope:'state'},
+      {t:'Medicaid/CHIP premium assistance deadline — Local Ed & Local Gov', b:'Enrollment request due within 20 calendar days of the eligibility notice, with documentation from Medicaid/CHIP proving qualification — a notably shorter window than the State/Higher Ed deadline, so flag this one for members.', scope:'local'},
       {t:'Effective dates', b:'Birth/adoption/placement received within 30 days → medical is retroactive to the event date, dental/vision start the 1st of the following month. Received days 31–60 → everything starts the 1st of the following month. All other SQEs: coverage starts the 1st of the month after every required document is received, with a hard 60-day deadline.'},
       {t:'10-day dependent grace period — the fine print', b:'Only protects the original effective date if the enrollment request AND every other required piece of SQE documentation were submitted on time, and only dependent verification is outstanding. It does NOT extend the deadline for missing SQE documentation itself (e.g., a late marriage certificate for a loss-of-coverage claim pushes the effective date out).'},
       {t:'Avoiding processing delays', b:'Most common causes: using the wrong form, missing/incomplete documentation, waiting to submit while collecting documents (submit immediately — it locks in the date), and assuming submission alone sets the effective date (it doesn\u2019t — all documentation must be received first).'},
@@ -268,21 +435,26 @@ const SECTIONS = [
       {q:'Which of these is NOT accepted as proof of joint ownership?',
        choices:['A joint bank statement from the last 6 months','A joint mortgage statement','A driver\u2019s license','A residential lease within its current term'], a:2,
        ex:'Driver\u2019s licenses, insurance cards, and utility bills are all rejected — they don\u2019t establish joint financial or residential ownership.'},
-      {q:'The 10-day dependent documentation grace period keeps the original effective date only when:',
-       choices:['Any document is late, as long as it\u2019s within 10 days','Only the dependent verification is outstanding — everything else was submitted on time','The employee pays a late fee','It applies automatically to every SQE type'], a:1,
-       ex:'If any other required SQE documentation (like a proof-of-loss letter) is also missing, the grace period doesn\u2019t apply and the effective date pushes out.'},
+      {q:'A State employee becomes newly eligible for Medicaid premium assistance. How many days do they have to submit the enrollment request?',
+       choices:['20 calendar days','30 calendar days','60 calendar days','90 calendar days'], a:2,
+       ex:'State & Higher Ed members get 60 days for this SQE — notably longer than the 20-day window for Local Education & Local Government members.', scope:'state'},
+      {q:'A Local Government employee becomes newly eligible for CHIP premium assistance. How many days do they have to submit the enrollment request?',
+       choices:['20 calendar days','30 calendar days','60 calendar days','90 calendar days'], a:0,
+       ex:'Local Education & Local Government members have a shorter 20-day window for this SQE than State & Higher Ed members, who get 60 days.', scope:'local'},
     ]
   },
   {
     id:'medical', label:'Medical Plans & Networks', color:'teal',
     presenters:'Andrea Dowdy',
     facts:[
-      {t:'Three plan designs, two carriers', b:'Premier PPO, Standard PPO, or the State CDHP with an HSA — each offered through either Blue Cross Blue Shield or Cigna. Premiums, member cost share, and benefit programs (Hinge Health, telehealth, fitness discounts) are identical regardless of which carrier a member picks.'},
-      {t:'Network choice is what actually moves cost', b:'Efficient networks (BCBS Network S, Cigna Local Plus) have lower negotiated provider rates, so members pay less in premiums, deductibles, and coinsurance. Expanded networks (BCBS Network P, Cigna Open Access Plus) cost providers — and therefore members — more across the board.'},
+      {t:'Plan designs vary a bit by group', b:'State & Higher Ed choose from the Premier PPO, Standard PPO, or State CDHP with an HSA. Local Education & Local Government choose from the Premier PPO, Standard PPO, Limited PPO, Local CDHP with an HSA, and the new Copay PPO (Copay PPO is Blue Cross Blue Shield Network S only — see its own section). Across all plans: same covered services, same exclusions, same medical-necessity rules, and (aside from the Copay PPO) the same network options.'},
+      {t:'Carrier choice: BCBS vs. Cigna', b:'Each carrier applies its own medical policy for medical-necessity determinations on prior authorizations (surgeries, MRIs/CTs). Otherwise they\u2019re equivalent: same premiums, same member cost share, same benefit programs (Hinge Health, telehealth, fitness/lifestyle discounts) regardless of which carrier a member picks.'},
+      {t:'Network choice is what actually moves cost', b:'Efficient networks (BCBS Network S, Cigna Local Plus) have lower negotiated provider rates, so members pay less in premiums, deductibles, and coinsurance. Expanded networks (BCBS Network P, Cigna Open Access Plus) cost providers — and therefore members — more across the board, even for the exact same provider and service.'},
       {t:'Worked example: an ER visit', b:'On an efficient network, a $1,500 allowed ER charge at 20% coinsurance costs the member $300. On the expanded network, the same visit might be allowed at $2,000, costing the member $400 — same hospital, same service, more expensive network.'},
-      {t:'Emergency care is always in-network', b:'Regardless of network choice, emergency care at any hospital is covered in-network. Some specific hospitals (e.g., HCA TriStar, Baptist Memphis) are out-of-network on the efficient networks for non-emergency care — check the all-network hospital list on Partners for Health before enrolling if a member has a hospital preference.'},
-      {t:'Carrum Health Centers of Excellence', b:'Covers surgical services and, new this year, cancer care (chemo/radiation) with Tennessee Oncology. Starting in 2027, weight-loss surgery will ONLY be covered through Carrum Health COE — nowhere else. No member cost on PPO plans; CDHP members pay nothing after meeting the federal minimum deductible.'},
-      {t:'BA vs. the carriers — who does what', b:'BA designs and implements the plans, manages carrier contracts, funds claims with premium dollars, and handles eligibility/enrollment support and appeals. The carriers determine medical necessity, maintain provider networks, process claims, and handle benefit-level appeals.'},
+      {t:'Emergency care is always in-network', b:'Regardless of network choice, emergency care at any hospital is covered in-network. Out-of-state members (including remote workers or a member\u2019s college-age dependent) don\u2019t need the expanded network either — they automatically have access to the national BlueCard network (BCBS) or Cigna Open Access Plus (Cigna) wherever a Local Plus network doesn\u2019t exist.'},
+      {t:'Network size & out-of-network hospitals', b:'BCBS Network S: 10,000+ primary care, 41,000+ specialists, ~95 acute care hospitals. BCBS Network P: 10,000+ primary care, 41,000+ specialists, ~110 acute care hospitals. Cigna Local Plus: 8,000\u20138,500+ primary care, 20,000\u201321,000+ specialists, ~93 acute care hospitals. Cigna Open Access Plus: 8,900+ primary care, 23,000+ specialists, ~108 acute care hospitals. (Counts are approximate as of August 2026 and shift with contract renegotiations — mid-year network changes are NOT a qualifying event.) Notable out-of-network exceptions on the efficient networks: HCA TriStar and Baptist Memphis are out for both Network S and Local Plus; check the all-network hospital list by county on Partners for Health before a member with a hospital preference enrolls.'},
+      {t:'Carrum Health Centers of Excellence', b:'Covers surgical services and cancer care (chemo/radiation, with Tennessee Oncology) for enrolled members 18+. Starting in 2027, weight-loss surgery will ONLY be covered through Carrum Health COE — going to an in-network BCBS/Cigna provider instead won\u2019t be covered. No member cost on PPO plans; CDHP members pay nothing after meeting the federal minimum deductible. If a member has to travel for COE care, travel (driving, hotel, per diem, even airfare) may also be covered, depending on distance.'},
+      {t:'BA vs. the carriers — who does what', b:'BA designs and implements the plans, manages carrier contracts, funds claims with premium dollars (except voluntary/fully-insured products), and handles eligibility/enrollment support and appeals. The carriers determine medical necessity, maintain provider networks, process claims, provide member-facing support, and handle benefit-level appeals.'},
     ],
     quiz:[
       {q:'What\u2019s the real practical difference between "efficient" and "expanded" networks?',
@@ -290,11 +462,33 @@ const SECTIONS = [
        ex:'Efficient-network providers agree to lower rates, which flows through to lower member premiums, deductibles, and coinsurance.'},
       {q:'Starting in 2027, where must weight-loss surgery be performed to be covered?',
        choices:['Any in-network hospital','Only through Carrum Health Centers of Excellence','Only at HCA TriStar facilities','It won\u2019t be covered anywhere'], a:1,
-       ex:'2027 is a hard change — weight-loss surgery performed anywhere outside Carrum Health COE will not be covered.'},
+       ex:'2027 is a hard change — weight-loss surgery performed anywhere outside Carrum Health COE, even at an in-network provider, will not be covered.'},
     ]
   },
   {
-    id:'disability', label:'Disability Benefits (2027 changes)', color:'amber',
+    id:'copaypposec', label:'New Copay PPO Plan (Local Ed & Local Gov)', color:'rose', scope:'local',
+    presenters:'Andrea Dowdy',
+    facts:[
+      {t:'The basic shape of the plan', b:'A new plan option for Local Education & Local Government only, using Blue Cross Blue Shield Network S exclusively. No deductible and no coinsurance for in-network medical care — members pay a flat, predictable copay based on the type of care and provider chosen (a few pharmacy exceptions apply). It has the lowest premiums of all the plan options, depending on employer funding.', scope:'local'},
+      {t:'Tier 1 vs. Tier 2 providers', b:'All Network S providers are in-network, but they\u2019re also rated Tier 1 (higher quality, lower copay) or Tier 2 (higher copay). Members can look up a provider\u2019s tier at bluecrossblueshield.com/providertiers-s.', scope:'local'},
+      {t:'Office-visit copays', b:'Primary care: $30 (Tier 1) / $80 (Tier 2). Specialist: $50 (Tier 1) / $100 (Tier 2). Teladoc virtual care: $0. Preventive care: covered 100%.', scope:'local'},
+      {t:'Facility copays (professional + facility combined into one charge)', b:'Inpatient: a single $2,500 copay regardless of length of stay. Outpatient surgery: $1,000 at an ambulatory surgical center, $2,500 at a hospital outpatient department. Advanced imaging (MRI/CT/PET), outpatient: $750. Convenience clinic (e.g. MinuteClinic): $30. Urgent care: $80. Emergency room: $1,000 flat (covers everything received there — if an MRI is also done in the ER, that\u2019s billed separately as $750 advanced imaging).', scope:'local'},
+      {t:'Behavioral health copays', b:'Administered by Optum Behavioral Health. Inpatient (mental health or substance use): $2,500. Outpatient office visit: $30. Talkspace virtual behavioral health: $0.', scope:'local'},
+      {t:'Out-of-pocket maximums', b:'Employee-only: $9,600 for medical, behavioral, and non-specialty pharmacy combined; $2,400 for specialty pharmacy — the specialty max matches every other plan option.', scope:'local'},
+      {t:'Its own pharmacy formulary', b:'Uses the CVS Value Formulary — generic and brand tiers only (no preferred/non-preferred split), and some non-preferred brands aren\u2019t on it at all. 30-day retail: $14 generic / up to $50 brand. 90-day retail: $28 generic / $100 brand. 90-day supply via mail order or a 90-day pharmacy: $14 generic / $50 brand. Obesity medications: 25% coinsurance for a 30-day supply, same as other plans. Specialty medications: 30% coinsurance, same as other plans.', scope:'local'},
+      {t:'Why a member might choose it', b:'Lower premiums, predictable flat costs, $0 preventive care and $0 Teladoc/Talkspace — but provider tier, care setting, and medication type all still affect the final cost, so members should check the network and compare tiers before assuming it\u2019s the cheapest option for their situation.', scope:'local'},
+    ],
+    quiz:[
+      {q:'Which network is the new Copay PPO plan built on?',
+       choices:['Cigna Local Plus','BCBS Network S only','BCBS Network P','Any efficient network, member\u2019s choice'], a:1,
+       ex:'The Copay PPO is exclusively a Blue Cross Blue Shield Network S plan.', scope:'local'},
+      {q:'On the Copay PPO, what does a member pay for an inpatient hospital stay, regardless of how long it lasts?',
+       choices:['20% coinsurance','A single flat $2,500 copay','$1,000 per day','Nothing after the deductible'], a:1,
+       ex:'Inpatient care is one flat $2,500 copay whether the stay is two days or a month — professional and facility charges are combined.', scope:'local'},
+    ]
+  },
+  {
+    id:'disability', label:'Disability Benefits (2027 changes)', color:'amber', scope:'state',
     presenters:'Zac Colona',
     facts:[
       {t:'STD consolidates to one plan', b:'Current STD A and STD B merge into a single employee-paid plan modeled on today\u2019s STD A: 60% of salary weekly, max $2,500/week, min $25/week, 14-day elimination period. Current enrollees move automatically.'},
@@ -317,63 +511,80 @@ const SECTIONS = [
     id:'pharmacy', label:'Pharmacy & FSA/HSA', color:'teal',
     presenters:'Missy Tucker, Adam Elkins',
     facts:[
-      {t:'CDHP + HSA seed funding', b:'Enrolling in the CDHP automatically opens an HSA, with the state paying the account fee. Active employees (not retirees) get seed funding at the start of the year: $500 employee-only or $1,000 family.'},
+      {t:'CDHP + HSA seed funding', b:'Enrolling in a CDHP (State CDHP or Local CDHP) automatically opens an HSA, with the state paying the account fee. Active employees (not retirees) get seed funding at the start of the year: $500 employee-only or $1,000 family.'},
       {t:'HSA tax treatment', b:'Contributions and withdrawals for qualified medical expenses are tax-free, and unused funds roll over and can eventually be invested. After age 65, non-medical withdrawals are taxed but not penalized; under 65, they\u2019re both taxed and hit with a 20% penalty.'},
-      {t:'2027 HSA contribution limits', b:'$4,500 employee-only (up $100), $9,000 for all family tiers — including employer contributions. Members 55+ can add another $1,000/year.'},
-      {t:'CDHP preventive drug list', b:'Maintenance medications on the IRS-approved CDHP preventive drug list (diabetes, heart conditions, COPD, asthma, etc.) get 10% coinsurance before the deductible is met, instead of full price.'},
-      {t:'Three FSA types, three sets of rules', b:'Medical FSA: 2027 max $3,400, partial carryover. Limited Purpose FSA (for CDHP enrollees, vision/dental only): 2027 max $3,400, up to $680 carryover — but a carryover balance must be used by the end of the following plan year or it\u2019s forfeited. Dependent Care FSA: 2027 max $7,500, NO carryover, funds only available as they\u2019re payroll-deducted, and claims can\u2019t be filed for future dates.'},
-      {t:'FSA eligibility & re-enrollment', b:'Enrollment isn\u2019t automatic — re-enroll every year during annual enrollment. Retirees, part-time employees, and higher-ed retirees are not eligible for any FSA.'},
+      {t:'2027 HSA contribution limits', b:'$4,500 employee-only (up $100), $9,000 for all family tiers — including employer contributions. Members 55+ can add another $1,000/year. Leaving a CDHP means keeping the HSA and its balance, but the state stops paying the account fee and no further contributions can be made (the account can stay with the current vendor or be transferred elsewhere).'},
+      {t:'CDHP preventive drug coinsurance — State CDHP', b:'Maintenance medications on the IRS-approved preventive drug list (diabetes, heart conditions, COPD, asthma, etc.) get 10% coinsurance before the deductible is met, instead of full price.', scope:'state'},
+      {t:'CDHP preventive drug coinsurance — Local CDHP', b:'On the Local CDHP, the same category of maintenance medications gets 20% coinsurance before the deductible is met — a different rate than the State CDHP, so don\u2019t assume the two CDHPs match on this point.', scope:'local'},
+      {t:'Two pharmacy formularies starting in 2027', b:'Members on most plans stay on the standard CVS Caremark formulary. Members on the new Copay PPO plan use the separate CVS Value Formulary (generic/brand tiers only) — both will be clearly linked and labeled on the plan microsite.'},
+      {t:'Three FSA types, three sets of rules', b:'Medical FSA: 2027 max $3,400, partial carryover. Limited Purpose FSA (for CDHP enrollees, vision/dental only): 2027 max $3,400, up to $680 carryover — but a carryover balance must be used by the end of the following plan year or it\u2019s forfeited. Dependent Care FSA: 2027 max $7,500, NO carryover, funds only available as they\u2019re payroll-deducted, and claims can\u2019t be filed for future dates. FSAs weren\u2019t covered in the Local Education/Local Government training session — confirm with BA whether they\u2019re offered for your agency type before advising members.'},
+      {t:'FSA eligibility & re-enrollment', b:'Enrollment isn\u2019t automatic — re-enroll every year during annual enrollment. Retirees and part-time employees are not eligible for any FSA.'},
       {t:'The 90-day rule', b:'After termination, employees have 90 days to submit FSA claims for expenses incurred on or before their termination date; anything unused after that is forfeited. Medical and Limited Purpose FSAs can continue under COBRA — Dependent Care FSA cannot.'},
-      {t:'CVS Caremark plan microsite', b:'Formerly called the "splash page." Hosts the formulary guidebook (updated quarterly), a member portal with real-time drug cost and claims lookup, and prior-authorization criteria.'},
-      {t:'Zepbound returns October 2026', b:'Coming back to the formulary with a prior authorization, quantity limits, and the standard 25% GLP-1 member cost share.'},
+      {t:'CVS Caremark plan microsite', b:'Formerly called the "splash page." Hosts the formulary guidebook(s) (updated quarterly), a member portal with real-time drug cost and claims lookup, network pharmacy search, and prior-authorization criteria.'},
+      {t:'Zepbound returns October 2026', b:'Coming back to the formulary with a prior authorization, quantity limits, and the standard 25% GLP-1 member cost share. More GLP-1 competitors are expected to reach market by late 2026 into 2027, which is likely to keep pushing category costs up.'},
+      {t:'Manufacturer coupons are fair game', b:'Members can stack manufacturer coupons (common for GLP-1s and other specialty/non-specialty drugs) on top of plan coinsurance — the plans are commercial, so this is allowed. Specialty pharmacies often proactively search for and apply these coupons.'},
     ],
     quiz:[
       {q:'Which FSA type allows NO carryover of unused funds?',
        choices:['Medical FSA','Limited Purpose FSA','Dependent Care FSA','All FSAs allow full carryover'], a:2,
        ex:'Dependent Care FSA funds are strictly use-it-or-lose-it each plan year, unlike Medical or Limited Purpose FSAs.'},
-      {q:'How long after termination can an employee submit FSA claims for pre-termination expenses?',
-       choices:['30 days','60 days','90 days','Coverage ends immediately'], a:2,
-       ex:'The 90-day rule applies to Medical, Limited Purpose, and Dependent Care FSAs alike, for expenses incurred on or before the termination date.'},
+      {q:'On the State CDHP, what\u2019s the coinsurance for preventive/maintenance drugs before the deductible is met?',
+       choices:['0%','10%','20%','25%'], a:1,
+       ex:'The State CDHP applies 10% coinsurance before the deductible for IRS preventive-drug-list maintenance medications — note that the Local CDHP uses a different rate (20%).', scope:'state'},
+      {q:'On the Local CDHP, what\u2019s the coinsurance for preventive/maintenance drugs before the deductible is met?',
+       choices:['0%','10%','20%','25%'], a:2,
+       ex:'The Local CDHP applies 20% coinsurance before the deductible for that same drug category — double the State CDHP\u2019s rate, so don\u2019t assume the two plans match.', scope:'local'},
     ]
   },
   {
     id:'retirement', label:'Retirement Insurance Enrollment', color:'plum',
     presenters:'Jasmine McCreight, C. Eric Dunn',
     facts:[
-      {t:'Creditable service requirement', b:'10 years of creditable service is required. State, higher ed, and participating local education service can combine. Local government service cannot combine with service from any other agency, including other local government agencies.'},
-      {t:'Application timing', b:'Retirees must apply to continue insurance within one full calendar month of active coverage ending or the TCRS retirement notice date — whichever is later.'},
+      {t:'Timely terminations matter', b:'Enter terminations in Edison promptly (using the RET code) — a late termination can bill an extra month of coverage to the agency. You can enter a termination up to 60 days in advance, which is the ideal lead time.'},
+      {t:'Application timing', b:'Retirees must apply to continue insurance within one full calendar month of active coverage ending or the TCRS retirement notice date — whichever is later. Have retirees use a personal email on the application, not their work email, in case BA needs to follow up after they\u2019ve left.'},
+      {t:'Creditable service requirement', b:'10 years of creditable service is required. State, higher ed, and participating local education service can combine. Local government service cannot combine with service from any other agency, including other local government agencies. Cashed-out (and not repaid) TCRS service doesn\u2019t count, and can also affect eligibility for the pre-7/1/2015 hire-date criteria even if later purchased back.'},
       {t:'New for 1/1/27', b:'Retirees will have the option to change their medical coverage/carrier at retirement. Continuing dependent-only group health requires the retiree to be enrolled in Medicare, and a retiree who is no longer eligible for group health cannot add a dependent via special enrollment.'},
-      {t:'Tennessee Plan basics', b:'A Medicare supplement — not standalone coverage — for retirees hired before July 1, 2015 who are enrolled in Medicare Parts A & B and receiving a TCRS pension. It doesn\u2019t cover prescription drugs and won\u2019t pay claims if the retiree is on a Medicare Advantage plan. Claims administrator moves from UMR to Blue Cross Blue Shield January 1, 2027.'},
-      {t:'Retiree dental & vision eligibility', b:'Also requires a hire date before July 1, 2015. Retirees who don\u2019t qualify but had active dental/vision coverage can continue under COBRA for up to 18 months; COBRA premiums are typically cheaper and can be processed against the TCRS pension.'},
-      {t:'No new dependents at retirement', b:'Retirees cannot add new dependents to group health, dental, or vision at the time of retirement. New dependents can only be added at the next annual enrollment, or via an approved qualifying event (60-day deadline for loss-of-coverage events).'},
+      {t:'Tennessee Plan basics', b:'A Medicare supplement — not standalone coverage — for retirees hired before July 1, 2015 who are enrolled in Medicare Parts A & B and receiving a TCRS pension. Spouse-only coverage isn\u2019t an option — the retiree must be enrolled themselves before adding a spouse. It doesn\u2019t cover prescription drugs and won\u2019t pay claims if the retiree is on a Medicare Advantage plan. Claims administrator moves from UMR to Blue Cross Blue Shield January 1, 2027.'},
+      {t:'Retiree dental/vision — State & Higher Ed', b:'Requires a hire date before July 1, 2015. Retirees who don\u2019t qualify but had active coverage can continue under COBRA for up to 18 months; COBRA premiums are typically cheaper and can be processed against the TCRS pension.', scope:'state'},
+      {t:'Retiree dental/vision — Local Education & Local Government (non-TCRS route)', b:'TCRS pensioners qualify the same way as other groups. Non-TCRS retirees instead need to be at least age 55 at termination with 10+ years of service. Local Education can combine service with other participating local education agencies or the state; Local Government cannot combine service with any other local government agency. The employing agency must currently participate in the dental/vision plan — if the agency later leaves that plan, retirees lose eligibility, EXCEPT those already enrolled before July 1, 2026, who stay grandfathered in.', scope:'local'},
+      {t:'COBRA dental vs. COBRA vision — a billing quirk', b:'Coverage is identical to retiree dental/vision, and COBRA premiums are typically cheaper for up to 18 months. COBRA dental premiums CAN be deducted from the TCRS pension check — COBRA vision premiums CANNOT.'},
+      {t:'No new dependents at retirement', b:'Retirees cannot add new dependents to group health, dental, or vision at the time of retirement — coverage carries over as-is. New dependents can only be added at the next annual enrollment, or via an approved qualifying event (60-day deadline for loss-of-coverage events).'},
     ],
     quiz:[
       {q:'What\u2019s required to be eligible for the Tennessee Plan?',
        choices:['Any retiree with a TCRS pension','A hire date before 7/1/2015, Medicare enrollment, and a TCRS pension','Any Medicare-eligible person, regardless of state employment','Only local government retirees'], a:1,
        ex:'All three conditions apply together: pre-2015 hire date, Medicare A & B enrollment, and receiving a TCRS pension.'},
-      {q:'When can a retiree add a new dependent to dental or vision coverage?',
-       choices:['Never, under any circumstance','Only at the next annual enrollment, or with an approved qualifying event','Anytime within the first 90 days of retirement','Only if the dependent is under age 5'], a:1,
-       ex:'New dependents can\u2019t be added at the moment of retirement — only during the next annual enrollment or through a qualifying event.'},
+      {q:'Which COBRA premium type can be deducted directly from a retiree\u2019s TCRS pension check?',
+       choices:['COBRA vision only','COBRA dental only','Both COBRA dental and vision','Neither can be deducted'], a:1,
+       ex:'COBRA dental premiums can be processed against the pension; COBRA vision premiums cannot.'},
+      {q:'A non-TCRS Local Government retiree wants retiree dental. What\u2019s the minimum age/service requirement?',
+       choices:['Age 55 with 10+ years at the same agency','Age 62 with 5+ years, any agency','Age 65 with 20+ years, any agency','There\u2019s no age or service minimum'], a:0,
+       ex:'Non-TCRS Local Government retirees need to be at least 55 at termination with 10+ years of service at the same agency — and that service can\u2019t combine with another local government agency.', scope:'local'},
     ]
   },
   {
     id:'deferredcomp', label:'Deferred Compensation & TCRS', color:'plum',
     presenters:'James Armistead',
     facts:[
-      {t:'TCRS is a set formula, not a balance', b:'Benefit = accrual factor (1% hybrid, 1.575% legacy) × average final compensation (average of the highest 60 consecutive months of salary) × years of service. The balance hybrid members see in their TCRS account has no bearing on their eventual benefit — it just funds it.'},
-      {t:'Empower administers 401(k)/457, but doesn\u2019t sell funds', b:'Empower is the record-keeper and educator only — there is not a single Empower-branded fund in the lineup (it includes Fidelity funds). The 17 on-the-ground retirement plan advisors are fiduciaries who don\u2019t sell products.'},
+      {t:'TCRS is a set formula, not a balance', b:'Benefit = accrual factor (1% hybrid, 1.575% legacy) × average final compensation (average of the highest 60 consecutive months of salary) × years of service. 30 years of legacy service replaces about 47% of income; 30 years of hybrid service replaces about 30% — with the 401(k) meant to make up the difference. The balance hybrid members see in their TCRS account has no bearing on their eventual benefit — it just funds it.'},
+      {t:'Deferred comp is available to every political subdivision', b:'The 401(k) and 457 plans are offered to all political subdivisions in the state, whether or not the agency participates in TCRS. Agencies with their own deferred comp plan elsewhere can request a fee comparison against the state\u2019s plans.', scope:'local'},
+      {t:'Empower administers 401(k)/457, but doesn\u2019t sell funds', b:'Empower is the record-keeper and educator only — there is not a single Empower-branded fund in the lineup (it includes Fidelity funds). The 17 on-the-ground retirement plan advisors are fiduciaries who don\u2019t sell products and work only on these plans.'},
       {t:'Immediate vesting', b:'Employees are immediately vested in the 401(k) and 457 plans, even under the hybrid TCRS structure — that employer money is theirs from day one.'},
-      {t:'2027 deferral limits', b:'For state/higher ed, the combined 401(k)+457 limit is $24,500 under age 50 (an extra $8,000 catch-up if 50+). Higher-ed ORP participants have separate, higher limits — confirm exact figures with Empower before advising members.'},
+      {t:'401(k) vs. 457 — the real difference', b:'Same investment options, same fees, both offer pre-tax and Roth. The only meaningful difference is withdrawal timing: 401(k) funds are available penalty-free at 59.5 (or 55 if separated from service); 457 funds are available penalty-free any time after separation from service, regardless of age. The 401(k) also allows loans against the balance — the 457 does not. The two plans do NOT share a contribution limit.'},
+      {t:'2027 deferral limits', b:'Employees can contribute up to $24,500 in the 401(k) AND up to $24,500 in the 457 — separately, for a combined $49,000 — since the two plans don\u2019t share a limit. Employees 50+ can add another $8,000 to each account (up to $16,000 in extra catch-up contributions total).'},
       {t:'Beneficiaries live in two places', b:'Updating a beneficiary in Edison (insurance) does NOT update TCRS or deferred comp beneficiaries — those must be updated separately through the retirement website.'},
-      {t:'Retirement Readiness Reviews pay off', b:'Free reviews with an Empower advisor. Members who\u2019ve done one report a 97.7% "retirement ready" score, versus about 70% for members who haven\u2019t.'},
+      {t:'Retirement Readiness Reviews pay off', b:'Free reviews with an Empower advisor, done as often as an employee likes — a gap analysis that looks at TCRS, deferred comp, and outside assets together. Members who\u2019ve done one report a 97% "retirement ready" score, versus about 70% for members who haven\u2019t. Net promoter score for these meetings is 93.'},
     ],
     quiz:[
       {q:'What actually determines a TCRS pension amount?',
        choices:['Investment performance of the employee\u2019s own contributions','A set formula: accrual factor × average final compensation × years of service','The balance shown in the employee\u2019s TCRS account','A flat dollar amount for all retirees'], a:1,
        ex:'TCRS is a defined-benefit plan — it\u2019s pure math, not investment performance, and the visible account balance doesn\u2019t equal the eventual benefit.'},
-      {q:'If an employee updates their beneficiary in Edison, what else do they need to do?',
-       choices:['Nothing — Edison updates everything','Separately update beneficiaries in TCRS and their 401(k)/457 accounts','Only update every 5 years','Call Empower by phone only'], a:1,
-       ex:'Edison, TCRS, and deferred comp beneficiaries are three separate records — all need to be kept current independently.'},
+      {q:'For 2027, what\u2019s the maximum an employee under 50 can defer across the 401(k) and 457 combined?',
+       choices:['$24,500 total, shared between both plans','$49,000 — $24,500 in each, since they don\u2019t share a limit','$16,000 total','There\u2019s no combined limit'], a:1,
+       ex:'The 401(k) and 457 have separate $24,500 limits each, so a member can defer up to $49,000 total across both.'},
+      {q:'What can a 401(k) do that a 457 plan cannot?',
+       choices:['Allow penalty-free withdrawal at any age after separation','Allow loans against the balance','Accept employer contributions','Roll over to another qualified plan'], a:1,
+       ex:'The 401(k) permits loans; the 457 does not. The 457\u2019s advantage runs the other way — penalty-free withdrawal at any age once separated from service.'},
     ]
   },
   {
@@ -421,11 +632,14 @@ const SECTIONS = [
     facts:[
       {t:'Incentive program mostly holds steady', b:'Dollar amounts stay the same for 2027 ($250 individual / $500 head-of-contract). A 5th wellness challenge is added (still $25 each, now $125 max total), themed "Dimensions of Wellness": purpose, physical health, financial wellness, community, and emotional wellness.'},
       {t:'New: Unwinding Anxiety', b:'A self-guided, 30-module Sharecare program. Unlike "Take Charge at Work," members don\u2019t have to qualify to participate, and it earns $100 toward the incentive.'},
+      {t:'Setting up an agency incentive program (local agencies)', b:'By default, local agency employees can see and use all Sharecare wellness resources, but not the "reward center" that state employees automatically get. An agency can opt into building its own cash-incentive program with Sharecare, choosing which activities and dollar amounts to reward within the state\u2019s allowed activity list, funded and administered by the agency (not BA). Cash incentives are taxable income — routing them through payroll (as the state does) means the agency doesn\u2019t have to rely on employees self-reporting taxes.', scope:'local'},
+      {t:'Local incentive program admin fees & deadlines', b:'Sharecare sets tiered per-employee-per-month admin fees based on head-of-contract enrollment count as of January 1 of that year — the tier is locked for the full year even if enrollment changes. Example: 370 head-of-contract enrollees = Tier 3 at $1.44/employee/month = $532.80/month = $6,393.60/year, debited from the agency\u2019s bank account via ACH. Deadline to confirm participation: July 31. Deadline to finalize the incentive structure with Sharecare: August 31.', scope:'local'},
       {t:'Optum keeps the EAP/behavioral health contract', b:'Retained for another 5 years. The terminology is reverting from "EWS" (emotional well-being resources) back to "EAP" in materials — Optum still uses EWS internally, but member-facing materials will say EAP again.'},
       {t:'EAP visits: 5 → 8', b:'Starting in 2027, members get 8 free EAP visits instead of 5. The goal is to keep more members supported at EAP\u2019s free, lower cost before they need to transition to behavioral health visits with a member cost share.'},
+      {t:'EAP buy-up for employees not on the health plan (local agencies)', b:'Employees who are benefits-eligible for medical but haven\u2019t enrolled don\u2019t automatically get EAP — an agency can buy that access separately. Unlike default EAP (where a covered employee\u2019s dependents also get access even if not enrolled), the buy-up covers the employee only, not dependents. Starts January 1; billed monthly per employee, with the per-employee rate increasing slightly over 5 years. Annual opt-in deadline is August 1. To enroll, email a statement of intent on agency letterhead, signed by the agency director, to nakeisha.n.miles@tn.gov (similar process to adding dental/vision).', scope:'local'},
       {t:'Integrated autism care pilot — October 2026', b:'For ages 0–17 and their caregivers, offering personalized support and expert clinical guidance for the whole family.'},
-      {t:'Mental health allyship (suicide awareness) training', b:'An 8-hour, by-request-only training — not listed in the general catalog because of the time commitment involved.'},
-      {t:'One Pass — January 2027', b:'A third fitness-discount option (alongside the existing Blue Cross program) giving access to multiple gyms across 5 tiers, plus Walmart+ and Shipt membership perks.'},
+      {t:'Mental health allyship (suicide awareness) training', b:'An 8-hour training, drawn from Optum\u2019s bank of contracted training hours. Whether it lands in the general training catalog or stays by-request is still being worked out, precisely because of that time commitment.'},
+      {t:'One Pass — January 2027', b:'A third fitness-discount option (alongside the existing Blue Cross/Cigna program) giving access to multiple gyms across 5 tiers in a single month, plus Walmart+ and Shipt membership perks — free to add, at no cost to the state.'},
       {t:'Co-branded materials for higher ed', b:'Higher ed ABCs can request the Here4TN supervisor newsletter and toolkit with their own institution\u2019s logo added, since employees respond better to familiar branding than to the Partners for Health logo alone.'},
     ],
     quiz:[
@@ -435,6 +649,12 @@ const SECTIONS = [
       {q:'What new resource for families launches in October 2026?',
        choices:['A genetic testing benefit','An integrated autism care pilot for ages 0\u201317 and caregivers','A separate autism insurance rider','Autism coverage only for dependents under 5'], a:1,
        ex:'The pilot supports the whole family — youth ages 0\u201317, adults, and caregivers — with personalized, clinically guided support.'},
+      {q:'What is the annual opt-in deadline for a local agency to add the EAP buy-up for employees not on the health plan?',
+       choices:['January 1','July 31','August 1','December 31'], a:2,
+       ex:'The buy-up opt-in deadline is August 1 each year, ahead of the January 1 start date.', scope:'local'},
+      {q:'For the local agency wellness incentive program, what determines an agency\u2019s Sharecare admin fee tier for the whole year?',
+       choices:['Enrollment count on January 1, locked for the year','Enrollment count re-checked monthly','A flat fee regardless of size','The agency\u2019s medical premium increase'], a:0,
+       ex:'The tier is set from head-of-contract enrollment as of January 1 and stays fixed for the entire year, even if enrollment changes.', scope:'local'},
     ]
   },
 ];
@@ -444,9 +664,13 @@ const COLOR_MAP = {
   teal:{main:'var(--teal)', soft:'var(--teal-soft)'},
   amber:{main:'var(--amber)', soft:'var(--amber-soft)'},
   plum:{main:'var(--plum)', soft:'var(--plum-soft)'},
+  rose:{main:'var(--rose)', soft:'var(--rose-soft)'},
 };
 
+const SCOPE_LABEL = {state:'State & Higher Ed', local:'Local Ed & Local Gov'};
+
 let mode = 'reference';
+let audience = 'all';
 let activeSection = SECTIONS[0].id;
 let searchTerm = '';
 let quizPool = 'all';
@@ -455,13 +679,27 @@ let quizScore = 0;
 let quizAnswered = false;
 let quizOrder = [];
 
+function visibleSections(){
+  return SECTIONS.filter(s => !s.scope || audience === 'all' || s.scope === audience);
+}
+
+function visibleFacts(s){
+  return s.facts.filter(f => !f.scope || audience === 'all' || f.scope === audience);
+}
+
+function scopeTag(scope){
+  if(!scope) return '';
+  return `<span class="fact-scope-tag">${SCOPE_LABEL[scope]} only</span>`;
+}
+
 function buildQuizOrder(){
   let items = [];
-  SECTIONS.forEach(s=>{
+  visibleSections().forEach(s=>{
     if(quizPool !== 'all' && quizPool !== s.id) return;
-    s.quiz.forEach(q=> items.push({section:s, q}));
+    s.quiz.forEach(q=>{
+      if(!q.scope || audience === 'all' || q.scope === audience) items.push({section:s, q});
+    });
   });
-  // light shuffle
   for(let i=items.length-1;i>0;i--){
     const j = Math.floor(Math.random()*(i+1));
     [items[i],items[j]] = [items[j],items[i]];
@@ -471,16 +709,21 @@ function buildQuizOrder(){
 
 function renderNav(){
   const list = document.getElementById('nav-list');
-  list.innerHTML = SECTIONS.map(s=>{
+  const sections = visibleSections();
+  if(!sections.find(s=>s.id===activeSection)){
+    activeSection = sections.length ? sections[0].id : null;
+  }
+  list.innerHTML = sections.map(s=>{
     const c = COLOR_MAP[s.color].main;
     const active = (mode==='reference' && s.id===activeSection) ? 'active' : '';
-    return `<li><button class="nav-btn ${active}" data-id="${s.id}"><span class="dot" style="background:${c}"></span>${s.label}</button></li>`;
+    const tag = s.scope ? `<span class="nav-scope">${s.scope==='state'?'State/HE':'Local'}</span>` : '';
+    return `<li><button class="nav-btn ${active}" data-id="${s.id}"><span class="dot" style="background:${c}"></span>${s.label}${tag}</button></li>`;
   }).join('');
   list.querySelectorAll('.nav-btn').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       mode='reference'; activeSection = btn.dataset.id; searchTerm='';
       document.getElementById('search-input').value='';
-      render();
+      renderApp();
     });
   });
 }
@@ -494,8 +737,8 @@ function renderReference(){
   if(searchTerm.trim().length > 1){
     const term = searchTerm.toLowerCase();
     let matches = [];
-    SECTIONS.forEach(s=>{
-      s.facts.forEach(f=>{
+    visibleSections().forEach(s=>{
+      visibleFacts(s).forEach(f=>{
         if(f.t.toLowerCase().includes(term) || f.b.toLowerCase().includes(term)){
           matches.push({section:s, fact:f});
         }
@@ -508,7 +751,7 @@ function renderReference(){
           const cm = COLOR_MAP[m.section.color];
           return `<div class="card" style="border-left-color:${cm.main}">
             <span class="badge" style="background:${cm.soft};color:${cm.main}">${m.section.label}</span>
-            <h3>${m.fact.t}</h3>
+            <h3>${m.fact.t} ${scopeTag(m.fact.scope)}</h3>
             <p>${m.fact.b}</p>
           </div>`;
         }).join('')}
@@ -516,24 +759,31 @@ function renderReference(){
     return;
   }
 
-  const s = SECTIONS.find(s=>s.id===activeSection);
+  const sections = visibleSections();
+  const s = sections.find(s=>s.id===activeSection);
+  if(!s){
+    main.innerHTML = `<div class="empty-state">Nothing to show for this filter combination.</div>`;
+    return;
+  }
   const cm = COLOR_MAP[s.color];
+  const facts = visibleFacts(s);
   main.innerHTML = `
     <div class="section-header">
-      <span class="section-eyebrow" style="color:${cm.main}">Day 1 — reference</span>
+      <span class="section-eyebrow" style="color:${cm.main}">Reference</span>
       <h2>${s.label}</h2>
       <div class="presenters">Presented by ${s.presenters}</div>
+      ${s.scope ? `<div class="scope-note">${SCOPE_LABEL[s.scope]} only</div>` : ''}
     </div>
-    ${s.facts.map(f=>`
+    ${facts.map(f=>`
       <div class="card" style="border-left-color:${cm.main}">
-        <h3>${f.t}</h3>
+        <h3>${f.t} ${scopeTag(f.scope)}</h3>
         <p>${f.b}</p>
       </div>`).join('')}
   `;
 }
 
 function renderQuizPicker(){
-  const opts = [{id:'all', label:'All topics'}].concat(SECTIONS.map(s=>({id:s.id, label:s.label})));
+  const opts = [{id:'all', label:'All topics'}].concat(visibleSections().map(s=>({id:s.id, label:s.label})));
   return `<div class="quiz-picker">${opts.map(o=>`<button data-id="${o.id}" class="${quizPool===o.id?'active':''}">${o.label}</button>`).join('')}</div>`;
 }
 
@@ -576,7 +826,7 @@ function renderQuiz(){
     <div class="section-header"><h2>Quiz</h2></div>
     ${picker}
     <div class="quiz-card" style="border-left:4px solid ${cm.main}">
-      <div class="quiz-progress">Question ${quizIdx+1} of ${quizOrder.length} · <span class="badge" style="background:${cm.soft};color:${cm.main}">${item.section.label}</span></div>
+      <div class="quiz-progress">Question ${quizIdx+1} of ${quizOrder.length} · <span class="badge" style="background:${cm.soft};color:${cm.main}">${item.section.label}</span> ${scopeTag(item.q.scope)}</div>
       <div class="quiz-q">${item.q.q}</div>
       <div class="quiz-choices" id="quiz-choices">
         ${item.q.choices.map((c,i)=>`<button class="quiz-choice" data-i="${i}">${c}</button>`).join('')}
@@ -623,7 +873,7 @@ function attachQuizPickerEvents(){
   });
 }
 
-function render(){
+function renderApp(){
   renderNav();
   document.getElementById('btn-mode-reference').classList.toggle('active', mode==='reference');
   document.getElementById('btn-mode-quiz').classList.toggle('active', mode==='quiz');
@@ -635,11 +885,29 @@ function render(){
   else renderQuiz();
 }
 
-document.getElementById('btn-mode-reference').addEventListener('click', ()=>{ mode='reference'; render(); });
-document.getElementById('btn-mode-quiz').addEventListener('click', ()=>{ mode='quiz'; if(quizOrder.length===0) startQuiz(); else renderQuiz(); });
+document.getElementById('btn-mode-reference').addEventListener('click', ()=>{ mode='reference'; renderApp(); });
+document.getElementById('btn-mode-quiz').addEventListener('click', ()=>{ mode='quiz'; quizOrder=[]; startQuiz(); });
 document.getElementById('search-input').addEventListener('input', (e)=>{ searchTerm = e.target.value; renderReference(); });
+document.querySelectorAll('#audience-toggle button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    audience = btn.dataset.a;
+    document.querySelectorAll('#audience-toggle button').forEach(b=>b.classList.toggle('active', b===btn));
+    if(mode==='quiz'){ quizPool='all'; startQuiz(); } else { renderApp(); }
+  });
+});
 
-render();
+/* ---- View switching between landing and app ---- */
+function showLanding(){
+  document.getElementById('landing-view').style.display = 'block';
+  document.getElementById('app-view').style.display = 'none';
+}
+function showAppView(){
+  document.getElementById('landing-view').style.display = 'none';
+  document.getElementById('app-view').style.display = 'block';
+  renderApp();
+}
+document.getElementById('enter-app-btn').addEventListener('click', showAppView);
+document.getElementById('rail-home-link').addEventListener('click', showLanding);
 </script>
 </body>
 </html>
